@@ -12,9 +12,10 @@ library(RWeka)
 library(data.table)
 library(dplyr)
 library(ngram)
+
 #Extracting sample data for analysis
-set.seed(100)
-SampleSize = 10000
+set.seed(123)
+SampleSize = 1500
 
 SampleNews <- DataNews[sample(1:length(DataNews),SampleSize, replace = TRUE, prob = NULL)]
 SampleTwitter <- DataTwitter[sample(1:length(DataTwitter),SampleSize, replace = TRUE, prob = NULL)]
@@ -40,7 +41,7 @@ TokenUniGram <- function(x) NGramTokenizer(x, Weka_control(min = 1, max = 1))
 TokenBiGram <- function(x) NGramTokenizer(x, Weka_control(min = 2, max = 2))
 TokenTriGram<- function(x) NGramTokenizer(x, Weka_control(min = 3, max = 3))
 TokenQuadGram <- function(x) NGramTokenizer(x, Weka_control(min = 4, max = 4))
-OneCorpus <- NGramTokenizer(corpus, Weka_control(min = 1, max = 1))
+#OneCorpus <- NGramTokenizer(corpus, Weka_control(min = 1, max = 1))
 UnigramCorpus <- TermDocumentMatrix(corpus, control = list(tokenize = TokenUniGram))
 BigramCorpus <- TermDocumentMatrix(corpus, control = list(tokenize = TokenBiGram))
 TrigramCorpus <- TermDocumentMatrix(corpus, control = list(tokenize = TokenTriGram))
