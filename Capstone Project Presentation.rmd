@@ -14,16 +14,17 @@ library(shiny)
 
 ## Introduction
 
-The goal of this exercise is to create a product to highlight the prediction algorithm for Englisg text and to provide an interface that can be accessed by others. This is the final presentation in the Capstone Project. 
+The goal of this exercise is to create a product to highlight the prediction algorithm for English text and to provide an interface that can be accessed by others. This presentation is created as the final step in the Capstone project for the Data Scientist specialization offered through Coursera / John Hopkins. 
+
 - Source data for Project: https://d396qusza40orc.cloudfront.net/dsscapstone/dataset/Coursera-SwiftKey.zip
 
 - Source Code:-GitHub at:https://github.com/prabeeti/CapstoneProject
 
 - For this project I have submitted the following:-
 
-- 1. A Shiny app that takes as input a phrase (multiple words) in a text box input and outputs a prediction of the next word. https://prabeeti.shinyapps.io/CapstoneProject/
+- 1. A Shiny app that takes as input a phrase (multiple words) in a text box input and outputs a prediction of the next word. https://prabeeti.shinyapps.io/Project/
 
-- 2. A slide deck consisting of 5 slides created with R Studio Presenter http://rpubs.com/prabeeti/562534
+- 2. A slide deck consisting of 5 slides created with R Studio Presenter http://rpubs.com/prabeeti/563916
 
 
 
@@ -40,7 +41,7 @@ Data(English Text) is extracted from news, twitter and blogs to build a predicti
 
 Katz back-off model is referred to model the next word prediction. This model is a generative n-gram language model that estimates the conditional probability of a word given its history in the n-gram. This process works as follows:
 
-- Meta data is loaded from .RDS file (WordPrediction.R)
+- Meta data is loaded from .RDS file
 - First N-gram is used as quadgram, which takes the first three words that user has provided and predicts the text.
 - If no match is found then the trigram is used,which takes the last two words of the user input and predicts the text.
 - If there is still no match found, bigram is used next,which uses the last word of the user input. 

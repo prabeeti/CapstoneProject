@@ -15,7 +15,20 @@ library(tm)
 library(RWeka)
 library(data.table)
 library(dplyr)
+library(shinydashboard)
+library(lubridate)
+library(plotly)
+library(shinyWidgets)
+library(DT)
+library(shinyjs)
+library(graphics)
+library(methods)
+library(grid)
+library(futile.logger)
+
+
 source("WordPrediction.R")
+
   
 shinyServer(
     function(input, output) {
@@ -26,3 +39,5 @@ shinyServer(
         
     }
 )
+
+

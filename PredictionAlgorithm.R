@@ -1,8 +1,9 @@
 
+
 #Getting news,blogs and twitter data 
-DataNews <- readLines("./final/en_US/en_US.news.txt", encoding="UTF-8", skipNul = TRUE, warn = TRUE)
-DataTwitter <- readLines("./final/en_US/en_US.twitter.txt",encoding="UTF-8", skipNul = TRUE, warn = TRUE)
-DataBlogs <- readLines("./final/en_US/en_US.blogs.txt",encoding="UTF-8", skipNul = TRUE, warn = TRUE)
+DataNews <- readLines("en_US.news.txt", encoding="UTF-8", skipNul = TRUE, warn = TRUE)
+DataTwitter <- readLines("en_US.twitter.txt",encoding="UTF-8", skipNul = TRUE, warn = TRUE)
+DataBlogs <- readLines("en_US.blogs.txt",encoding="UTF-8", skipNul = TRUE, warn = TRUE)
 
 #loading all the libraries
 library(ggplot2)
@@ -15,13 +16,13 @@ library(ngram)
 
 #Extracting sample data for analysis
 set.seed(123)
-SampleSize = 1500
+SampleSize = 1000
 
 SampleNews <- DataNews[sample(1:length(DataNews),SampleSize, replace = TRUE, prob = NULL)]
 SampleTwitter <- DataTwitter[sample(1:length(DataTwitter),SampleSize, replace = TRUE, prob = NULL)]
 SampleBlogs <- DataBlogs[sample(1:length(DataBlogs),SampleSize, replace = TRUE, prob = NULL)]
 
-dataframeEnUS <-rbind(SampleNews,SampleTwitter,SampleBlogs)
+dataframeEnUS <-rbind(SampleNews,SampleTwitter,SampleBlogs,use.names=TRUE)
 rm(DataNews,DataTwitter,DataBlogs)
 
 
@@ -41,7 +42,7 @@ TokenUniGram <- function(x) NGramTokenizer(x, Weka_control(min = 1, max = 1))
 TokenBiGram <- function(x) NGramTokenizer(x, Weka_control(min = 2, max = 2))
 TokenTriGram<- function(x) NGramTokenizer(x, Weka_control(min = 3, max = 3))
 TokenQuadGram <- function(x) NGramTokenizer(x, Weka_control(min = 4, max = 4))
-#OneCorpus <- NGramTokenizer(corpus, Weka_control(min = 1, max = 1))
+OneCorpus <- NGramTokenizer(corpus, Weka_control(min = 1, max = 1))
 UnigramCorpus <- TermDocumentMatrix(corpus, control = list(tokenize = TokenUniGram))
 BigramCorpus <- TermDocumentMatrix(corpus, control = list(tokenize = TokenBiGram))
 TrigramCorpus <- TermDocumentMatrix(corpus, control = list(tokenize = TokenTriGram))

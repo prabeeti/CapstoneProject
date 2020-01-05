@@ -2,6 +2,8 @@
 
 #Load the n-gram databases 
 
+
+
 load=("BigramData.Rds")
 load=("TrigramData.Rds")
 load=("DataQuadgram.Rds")
@@ -12,6 +14,7 @@ library(stringr)
 library(dplyr)
 library(tm)
 library(stylo)
+citation("stylo")
 
 proc1 <- function(sentence){
     
@@ -54,7 +57,7 @@ quadgram <- function(fourg){
         n<- as.numeric(found$frequency)
         
         if(length(n)!=0){
-            foursum <- rbind(foursum,found,use.names=FALSE, fill=TRUE)
+            foursum <- rbind(foursum,found,use.names=TRUE, fill=TRUE)
            
         }
     }
@@ -77,7 +80,7 @@ trigram <- function(threeg){
         n<- as.numeric(found$frequency)
         
         if(length(n)!=0){
-            threesum <- rbind(threesum,found,use.names=FALSE, fill=TRUE)
+            threesum <- rbind(threesum,found,use.names=TRUE, fill=TRUE)
             
         }
     }
@@ -101,7 +104,7 @@ bigram <- function(twog){
         n<- as.numeric(found$frequency)
         
         if(length(n)!=0){
-            twosum <- rbind(twosum,found,use.names=FALSE, fill=TRUE)
+            twosum <- rbind(twosum,found,use.names=TRUE, fill=TRUE)
             
         }
     }
